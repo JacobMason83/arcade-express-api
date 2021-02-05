@@ -3,9 +3,10 @@ const Schema = mongoose.Schema
 
 
 const games = new Schema({
-    gameName: {
-        type: String, 
-        required: true
+    gamename: {
+        type: String,
+        isRequired: true 
+        
     },
     description: {
         type: String,
@@ -13,7 +14,8 @@ const games = new Schema({
     },
     url: {
         type: String,
-        required: true
+        isRequired:true
+        
     },
     image: {
         type: String,         
@@ -32,5 +34,5 @@ const games = new Schema({
 })
 
 
-let Games = mongoose.model('games', games)
-module.exports = Games
+// let Games = mongoose.model('games', games)
+module.exports = mongoose.model('games', games)

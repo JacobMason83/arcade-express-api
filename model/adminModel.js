@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Schema = mongooose.Schema
+const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
 
@@ -9,11 +9,11 @@ const admin = new Schema ({
         username: {
             type: String, 
             unique: true,
-            required: true
+            isRequired: true
         },
         password: {
             type: String, 
-            required: true
+            isRequired: true
         }
     }, 
 })
@@ -32,11 +32,11 @@ admin.statics.fillable = [
     'username', "password"
 
  ]
-games.statics.returnable = [
+admin.statics.returnable = [
     "_id",
     "username"
     
 ]
 
-let Admin = mongoose.model('admin', admin)
-module.exports = Admin
+
+module.exports = mongoose.model('admin', admin)
