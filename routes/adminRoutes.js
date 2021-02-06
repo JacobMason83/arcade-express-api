@@ -11,18 +11,18 @@ router.post('/register', (req, res) => {
     admin 
     .save()
     .then(admin => {
-        const { _id, username } = admin
-        return res.status(200).json({ _id, username})
+        
+        return res.status(200).json({ message: 'User Created'})
     })
     .catch(err => console.log(err))
 })
 // login router
 router.post('/login', (req, res) => {
-    const user = req.body.username
-    const admin = Admin.find(username => user.username === username)
+    const {username, password} = req.body
+    const admin = Admin.find(item => item.username === username)
     if(admin) {
-        const { username, password} = admin
-        if(password === user.password){
+        
+        if(password === admin.password){
             res.status(200).json({ loggedIn: true, message: "logged-in", username})
         } else {
             res.status(401).json({ 
